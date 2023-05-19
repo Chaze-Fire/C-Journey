@@ -78,10 +78,23 @@ There are 3 kinds of Loops in C++
 1) While Loop -- This loops executes a set of funtions while a certain condition is True
 2) Do While Loop -- This Loop is similar to While loop but it executes the commands even if the condition is false at first then it works just like a while loop.
 3) For Loop -- This Loop has 3 indentations in its brackets. First one is the creation of a variable, Second oe is the condition for how many times the loop should execute, the third one is the incrementation or  the decrementation.
+4) For Each loop -- This Loop is the for loop but with a different syntax, i.e-
+  for(std::string any_variable : any_array){
+
+} 
 
 **************************Break/Continue********************************
 Break -- This keyword is used to break out of a the whole loop
 Continue -- This keyword is used to skip that particular reading
 
 ************************Functions**************************************
-Functions are block of reusable code that 
+Functions are block of reusable code that can be used as many time as we want with a return type
+
+*************************Array*************************************
+Arrays are like a list of values that a variable can hold,  but a array can hold a value only of a same type. I.e
+double marks[] = {5.6, 6.7, 5.7}
+Note--  while passing an array to a function that array would transform in a data type called Pointer
+
+***********************Sizeof**************************************
+This is a function that calculates and return the size size of a variable, data type , etc. ie
+sizeof(double), sizeof(num) etc..

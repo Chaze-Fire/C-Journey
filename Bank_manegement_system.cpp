@@ -5,7 +5,7 @@
 #include <fstream>
 
 using namespace std;
-int money =0;
+double money = 0;
 void login(){
 
     string uName, pass, name, email, gender;
@@ -71,64 +71,76 @@ void showBalance();
 void withdrawMoney();
 void depositMoney();
 int main(){
-    int choice;
-    cout << "*************************\n";
-    cout << "Bank Manegement System\n";
-    cout << "**************************\n";
-    login();
-    cout << "What would you like to do Today?\n";
-    cout << "1) Show Balance\n";
-    cout << "2) Withdraw Money\n";
-    cout << "3) Deposit Money\n";
-    cout << "3) Create An Account\n";
-    cout << "4) Exit\n";
-    cout << "Enter Your Choice: ";
+        int choice;
+        cout << "*************************\n";
+        cout << "Bank Manegement System\n";
+        cout << "**************************\n";
+        login();
+    do {
+        cout << "\nWhat would you like to do Today?\n";
+        cout << "1) Show Balance\n";
+        cout << "2) Withdraw Money\n";
+        cout << "3) Deposit Money\n";
+        cout << "3) Create An Account\n";
+        cout << "4) Exit\n";
+        cout << "Enter Your Choice: ";
+        
+        cin >> choice;
+        ifstream input("record.txt");
     
-    cin >> choice;
-    ifstream input("record.txt");
-
-    if(!input) {
-        cout<<"Error creating file!";
-    }
-   input >> money;
-   input.close();
-    switch(choice){
-        case 1:
-           showBalance();
-           break;
-        case 2:
-           withdrawMoney();
-           break;
-        case 3:
-           depositMoney();
-           break;
-        case 4:
-           break;
-        default:
-           cout << "Please Enter A valid Choice";
-           break;
+        if(!input) {
+            cout<<"Error creating file!";
         }
+        input >> money;
+        switch(choice){
+            case 1:
+               showBalance();
+               input.close();
+               break;
+            case 2:
+               withdrawMoney();
+               input.close();
+               break;
+            case 3:
+               depositMoney();
+               input.close();
+               break;
+            case 4:
+               break;
+            default:
+               cout << "Please Enter A valid Choice";
+               break;
+            }
+    }while(1 == 1);
+
     return 0;
 }
 void depositMoney(){
-    ifstream input("record.txt");
-
-    if(!input) {
-        cout<<"Error creating file!";
-    }
-    cout << "******************Money Deposit ************************************";
+    double deposit;
+    cout << "\nPlease Enter How Much Money you would like to deposit: ";
+    cin >> deposit;
+    money = money + deposit;
+    cout << "Money Deposited: " << deposit << endl;
+    cout << "Money in your Account: " << money << endl;
 };
 void withdrawMoney(){
-   cout << "HEllo World 2money";
+    double withdraw;
+    cout << "Please Enter How Much Money you would like to withdraw: ";
+    cin >> withdraw;
+    if (money < withdraw){
+        cout << "You Do No Have The Sufficient Funds!";
+    }
+    else if(money = withdraw){
+        money = money - withdraw;
+        cout << "Money withdrawed: " << withdraw << endl;
+        cout << "Money left in the account: " << money << endl; 
+    }
+    else{
+       money = money - withdraw;
+       cout << "Money withdrawed: " << withdraw << endl;
+       cout << "Money left in the account: " << money << endl; 
+    }
 };
 void showBalance(){
-    ifstream input("record.txt");
-
-    if(!input) {
-        cout<<"Error creating file!";
-    }
-   input >> money;
-   input.close();
    cout << "Your Balance is: " << money << endl;
-   
 };

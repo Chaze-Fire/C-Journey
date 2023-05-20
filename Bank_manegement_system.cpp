@@ -6,7 +6,6 @@
 
 using namespace std;
 int g = 0;
-int money;
 void login(){
     
     string uName, pass, name, email, gender;
@@ -88,20 +87,9 @@ int main(){
     cin >> choice;
     switch(choice){
         case 1:
-           login();
-           if (g = 1){
-            cout << "Please Login Correctly\n";
-           }
-           else{
            showBalance();
-           }
            break;
         case 2:
-           login();
-           if (g = 1){
-            cout << "Please Login Correctly\n";
-           }
-           else{
            withdrawMoney();
            }
            break;

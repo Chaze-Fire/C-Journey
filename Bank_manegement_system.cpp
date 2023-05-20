@@ -85,6 +85,13 @@ int main(){
     cout << "Enter Your Choice: ";
     
     cin >> choice;
+    ifstream input("record.txt");
+
+    if(!input) {
+        cout<<"Error creating file!";
+    }
+   input >> money;
+   input.close();
     switch(choice){
         case 1:
            showBalance();

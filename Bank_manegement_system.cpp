@@ -5,9 +5,9 @@
 #include <fstream>
 
 using namespace std;
-int g = 0;
+int money =0;
 void login(){
-    
+
     string uName, pass, name, email, gender;
     string logname, logpass;
     string valname, valpass;
@@ -33,7 +33,7 @@ void login(){
         cout<<"Enter phone number: "<<endl;
         cin>>phone;
 
-        output<<uName<<" "<<pass<<" "<<name<<" "<<email<<" "<<gender<<" "<<phone<<endl;
+        output<<uName<<" "<<pass<<" "<<name<<" "<<email<<" "<<gender<<" "<<phone<<" "<<money<<endl;
         output.close();
         cout<<"Registration complete!"<<endl;
 
@@ -58,7 +58,6 @@ void login(){
         }
         else {
             cout<<"Login failed!"<<endl;
-            int g = 1;
         }
 
         input.close();
@@ -76,6 +75,7 @@ int main(){
     cout << "*************************\n";
     cout << "Bank Manegement System\n";
     cout << "**************************\n";
+    login();
     cout << "What would you like to do Today?\n";
     cout << "1) Show Balance\n";
     cout << "2) Withdraw Money\n";
@@ -91,16 +91,9 @@ int main(){
            break;
         case 2:
            withdrawMoney();
-           }
            break;
         case 3:
-           login();
-           if (g = 1){
-            cout << "Please Login Correctly\n";
-           }
-           else{
            depositMoney();
-           }
            break;
         case 4:
            break;
@@ -111,11 +104,24 @@ int main(){
     return 0;
 }
 void depositMoney(){
-   cout << "******************Money Deposit ************************************";
+    ifstream input("record.txt");
+
+    if(!input) {
+        cout<<"Error creating file!";
+    }
+    cout << "******************Money Deposit ************************************";
 };
 void withdrawMoney(){
    cout << "HEllo World 2money";
 };
 void showBalance(){
-   cout << "HEllo World BALANCE";
+    ifstream input("record.txt");
+
+    if(!input) {
+        cout<<"Error creating file!";
+    }
+   input >> money;
+   input.close();
+   cout << "Your Balance is: " << money << endl;
+   
 };
